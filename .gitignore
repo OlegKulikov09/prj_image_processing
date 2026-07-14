@@ -1,0 +1,18 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Generated data & logs (large / regenerable) — keep the folder, ignore contents
+data/*
+!data/.gitkeep
+
+# Raw dataset (very large — download separately)
+V3C1_200/
+
+# Secrets
+.env
+config_local.py
+
+# OS
+.DS_Store

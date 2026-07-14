@@ -1,0 +1,18 @@
+# Core ML
+torch
+transformers
+pillow
+numpy
+
+# SigLIP2 processor/tokenizer deps
+sentencepiece
+protobuf
+
+# Backend
+fastapi
+uvicorn[standard]
+python-multipart
+
+# DRES client + utils
+requests
+tqdm

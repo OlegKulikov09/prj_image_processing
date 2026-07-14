@@ -1,0 +1,102 @@
+:root {
+  --bg: #14171c;
+  --panel: #1c2027;
+  --panel-2: #242a33;
+  --line: #333a45;
+  --text: #e7eaee;
+  --muted: #9aa4b2;
+  --accent: #4f9dff;
+  --accent-2: #2f6fd0;
+  --good: #43b581;
+  --bad: #e2564a;
+  --radius: 8px;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body {
+  background: var(--bg); color: var(--text);
+  font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ---------- top bar ---------- */
+.topbar {
+  display: flex; align-items: center; gap: 16px;
+  padding: 10px 16px; background: var(--panel);
+  border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 10;
+}
+.brand { font-weight: 700; font-size: 16px; letter-spacing: .3px; white-space: nowrap; }
+.brand span { color: var(--accent); font-weight: 500; }
+.search { display: flex; gap: 8px; flex: 1; }
+.search input { flex: 1; min-width: 120px; }
+input, select, button {
+  font: inherit; color: var(--text); background: var(--panel-2);
+  border: 1px solid var(--line); border-radius: var(--radius); padding: 8px 12px;
+}
+input:focus, select:focus { outline: 2px solid var(--accent); border-color: var(--accent); }
+button { cursor: pointer; background: var(--panel-2); transition: background .12s; }
+button:hover { background: #2c333d; }
+.search button { background: var(--accent-2); border-color: var(--accent-2); }
+.search button:hover { background: var(--accent); }
+
+.dres { display: flex; align-items: center; gap: 8px; }
+.dres-status { font-size: 12px; padding: 4px 8px; border-radius: 20px; white-space: nowrap; }
+.dres-status.off { background: #3a2224; color: #f0a; color: var(--bad); }
+.dres-status.on { background: #1e3a2c; color: var(--good); }
+
+/* ---------- status + grid ---------- */
+.status-line { padding: 10px 16px 0; color: var(--muted); font-size: 13px; min-height: 20px; }
+.grid {
+  display: grid; gap: 6px; padding: 12px 16px 40px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+.cell {
+  position: relative; background: var(--panel); border: 1px solid var(--line);
+  border-radius: 6px; overflow: hidden; cursor: pointer; aspect-ratio: 16 / 9;
+}
+.cell img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.cell:hover { border-color: var(--accent); }
+.cell:focus-visible { outline: 2px solid var(--accent); }
+.cell .tag {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  display: flex; justify-content: space-between; gap: 6px;
+  padding: 3px 6px; font-size: 11px;
+  background: linear-gradient(transparent, rgba(0,0,0,.8));
+  color: #fff; pointer-events: none;
+}
+.cell .score { color: var(--accent); font-variant-numeric: tabular-nums; }
+
+/* ---------- overlays ---------- */
+.overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,.72);
+  display: flex; align-items: center; justify-content: center; z-index: 50; padding: 20px;
+}
+.overlay.hidden { display: none; }
+
+.player {
+  background: var(--panel); border: 1px solid var(--line); border-radius: 10px;
+  width: min(900px, 100%); max-height: 92vh; display: flex; flex-direction: column; overflow: hidden;
+}
+.player-head { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+.player-title { font-weight: 600; }
+.icon-btn { padding: 4px 10px; }
+#video { width: 100%; max-height: 58vh; background: #000; display: block; }
+.player-meta { padding: 8px 14px; color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums; }
+.player-controls { display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-top: 1px solid var(--line); flex-wrap: wrap; }
+.player-controls .spacer { flex: 1; }
+.player-controls #answer-text { min-width: 160px; }
+button.submit { background: var(--good); border-color: var(--good); color: #06231a; font-weight: 600; }
+button.submit:hover { background: #58c996; }
+.submit-result { padding: 0 14px 12px; font-size: 13px; min-height: 4px; }
+.submit-result.ok { color: var(--good); }
+.submit-result.err { color: var(--bad); }
+
+/* ---------- login ---------- */
+.login { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 20px; width: min(360px, 100%); }
+.login h2 { margin: 0 0 14px; font-size: 16px; }
+.login label { display: block; margin-bottom: 12px; color: var(--muted); font-size: 13px; }
+.login input { width: 100%; margin-top: 4px; }
+.login-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 6px; }
+.login-actions button[type=submit] { background: var(--accent-2); border-color: var(--accent-2); }
+.login-msg { margin-top: 10px; font-size: 13px; min-height: 4px; }
+.login-msg.err { color: var(--bad); }
+.login-msg.ok { color: var(--good); }

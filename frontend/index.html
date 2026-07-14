@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>V3C Video Retrieval</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">V3C&nbsp;<span>Retrieval</span></div>
+    <form id="search-form" class="search">
+      <input id="query" type="text" placeholder="Search shots — e.g. 'two people shaking hands on a stage'"
+             autocomplete="off" autofocus>
+      <select id="topk" title="number of results">
+        <option value="60">60</option>
+        <option value="120">120</option>
+        <option value="240">240</option>
+      </select>
+      <button type="submit">Search</button>
+    </form>
+    <div class="dres" id="dres-box">
+      <span id="dres-status" class="dres-status off">DRES: offline</span>
+      <button id="dres-login-btn" type="button">Login</button>
+    </div>
+  </header>
+
+  <main>
+    <div id="status-line" class="status-line"></div>
+    <div id="grid" class="grid"></div>
+  </main>
+
+  <!-- Player overlay -->
+  <div id="player-overlay" class="overlay hidden">
+    <div class="player">
+      <div class="player-head">
+        <div id="player-title" class="player-title"></div>
+        <button id="player-close" class="icon-btn" title="Close (Esc)">✕</button>
+      </div>
+      <video id="video" controls preload="auto"></video>
+      <div class="player-meta" id="player-meta"></div>
+      <div class="player-controls">
+        <button id="btn-prev" title="Previous shot ([)">◀ shot</button>
+        <button id="btn-next" title="Next shot (])">shot ▶</button>
+        <button id="btn-similar" title="Find similar (F)">≈ Similar</button>
+        <span class="spacer"></span>
+        <input id="answer-text" type="text" placeholder="VQA text answer (optional)">
+        <button id="btn-submit" class="submit" title="Submit to DRES (S)">▶ Submit to DRES</button>
+      </div>
+      <div id="submit-result" class="submit-result"></div>
+    </div>
+  </div>
+
+  <!-- DRES login dialog -->
+  <div id="login-overlay" class="overlay hidden">
+    <form class="login" id="login-form">
+      <h2>DRES login</h2>
+      <label>Username <input id="dres-user" type="text" autocomplete="username"></label>
+      <label>Password <input id="dres-pass" type="password" autocomplete="current-password"></label>
+      <div class="login-actions">
+        <button type="button" id="login-cancel">Cancel</button>
+        <button type="submit">Connect</button>
+      </div>
+      <div id="login-msg" class="login-msg"></div>
+    </form>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
