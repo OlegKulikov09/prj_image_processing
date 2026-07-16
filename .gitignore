@@ -3,9 +3,15 @@
 __pycache__/
 *.pyc
 
-# Generated data & logs (large / regenerable) — keep the folder, ignore contents
+# Generated data — commit the search index + keyframes so the repo is searchable
+# right after clone. Keep the heavy proxy videos (regenerable via scripts/04) and
+# logs out of git.
 data/*
 !data/.gitkeep
+!data/keyframes/
+!data/embeddings.npy
+!data/shot_ids.npy
+!data/index.sqlite
 
 # Raw dataset (very large — download separately)
 V3C1_200/
