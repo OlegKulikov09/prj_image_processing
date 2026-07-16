@@ -61,6 +61,12 @@ Run once, in order (each step is idempotent / resumable):
 Produces (in `data/`): `index.sqlite`, `keyframes/`, `embeddings.npy` + `shot_ids.npy`,
 `proxies/`.
 
+**After cloning:** this repo already ships with the prebuilt search index
+(`index.sqlite`, `embeddings.npy`, `shot_ids.npy`) and all shot keyframes, so **text
+search and thumbnails work immediately** — no need to run steps 1–3. Only the proxy
+videos are not included (too large for git): run `scripts/04_transcode.py` on the raw
+dataset to regenerate them if you want in-player **video playback**.
+
 ## Run the system
 
 ```bash
